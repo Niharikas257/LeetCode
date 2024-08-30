@@ -15,6 +15,7 @@ class Solution(object):
         cur = head
         
         while cur:
+            # When there are duplicates, skip all the nodes with same value, move prev pointer to the node just after the last duplicate node.
             if cur.next and cur.val == cur.next.val:
                 while cur.next and cur.val == cur.next.val:
                     cur = cur.next
