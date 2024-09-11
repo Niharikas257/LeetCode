@@ -9,6 +9,7 @@ class Solution(object):
                 left = char_index[s[right]] +1
             
             char_index[s[right]] = right
+                        
             
             max_length = max(max_length, right-left+1)
             
