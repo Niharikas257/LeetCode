@@ -16,9 +16,11 @@ class Solution(object):
             else:
                 stack.append([char,1])
         
-        #result = []
+        result = []
         
-        # return(for char, count in stack:
-        #     result.append(char*count))
+        for char, count in stack:
+            result.append(char*count)
             
-        return ''.join([(char*count) for char, count in stack])
+        return ''.join(result)
+            
+        # return ''.join([(char*count) for char, count in stack])
