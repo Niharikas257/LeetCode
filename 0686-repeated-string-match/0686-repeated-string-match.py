@@ -32,6 +32,7 @@ class Solution(object):
             return min_repeats + 1
         elif b in a * (min_repeats + 2):
             return min_repeats + 2
+        
 
         return -1
 
