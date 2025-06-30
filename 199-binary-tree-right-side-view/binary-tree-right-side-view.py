@@ -23,11 +23,12 @@ class Solution:
         #         res.append(rightmost.val)
         # return res
         res = []
-
+        visited = set()
         def dfs(node,depth):
             if not node:
                 return None
-            if depth == len(res):
+            if depth not in visited:
+                visited.add(depth)
                 res.append(node.val)
             dfs(node.right, depth+1)
             dfs(node.left, depth+1)
