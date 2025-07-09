@@ -36,7 +36,7 @@ class Twitter:
                 index = len(self.tweetmap[followeeId])-1
                 count, tweetId = self.tweetmap[followeeId][index] # we want the count and tweetID of the followee's tweet from the tweetmap at a particular index inside the particular followee tweets list.
                 heapq.heappush(minheap, [count, tweetId, followeeId, index-1]) # index -1  becuase we are pushing the 2nd latest tweet of the followee.
-        heapq.heapify(minheap)
+        # heapq.heapify(minheap)
         while minheap and len(res) < 10: 
             # until we have elements in the min heap and until we not have 10 tweets for the newsfeed, we will keep on repeating the loop.
             count, tweetId, followeeId, index = heapq.heappop(minheap)
