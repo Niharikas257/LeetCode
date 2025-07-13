@@ -16,12 +16,29 @@ class Solution:
         #     subset.append(nums[i])
         #     backtrack(i+1)
         #     subset.pop()
-        #     # while i+1 < len(nums) and nums[i] == nums[i+1]:
-        #     #     i+=1 # skip the element is the elements are same
         #     backtrack(i+1)    
             
         # backtrack(0)
         # return res
+
+
+
+
+        # res = []
+        # subset = []
+        # nums.sort()
+        # def backtrack(start):
+        #     res.append(subset.copy())
+        #     for i in range(start, len(nums)):
+        #         if i > start and nums[i] == nums[i-1]:
+        #             continue
+        #         subset.append(nums[i])
+        #         backtrack(i+1)
+        #         subset.pop()
+        # backtrack(0)
+        # return res
+        
+
         res = []
         subset = []
         nums.sort()
@@ -35,4 +52,3 @@ class Solution:
                 subset.pop()
         backtrack(0)
         return res
-        
