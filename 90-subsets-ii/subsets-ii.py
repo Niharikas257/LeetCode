@@ -52,3 +52,19 @@ class Solution:
                 subset.pop()
         backtrack(0)
         return res
+
+        res = []
+        subset = []
+        visited = []
+        def dfs(i):
+            if i >= len(nums):
+                t = tuple[subset]
+                if t not in seen:
+                    res.append(subset.copy())
+                    return
+            subset.append(nums[i])
+            backtrack(i+1)
+            subset.pop()
+            backtrack(i+1)
+        backtrack(0)
+        return res
