@@ -6,10 +6,10 @@ class Solution:
 
         for num in nums:
             prefix_sum += num
-            # mod = prefix_sum % k
+            mod = prefix_sum % k
             
-            if (prefix_sum %k) in seen:
-                count += seen[prefix_sum%k]
+            if mod in seen:
+                count += seen[mod]
 
-            seen[prefix_sum%k] = seen.get(prefix_sum%k,0) + 1
+            seen[mod] = seen.get(mod,0) + 1
         return count
