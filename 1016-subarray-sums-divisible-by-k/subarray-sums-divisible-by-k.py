@@ -11,8 +11,10 @@ class Solution:
             if mod<0:
                 mod += k
             
-            if mod in seen:
-                count += seen[mod]
+            # if mod in seen:
+            #     count += seen[mod]
+            count += seen.get(mod,0) 
+
 
             seen[mod] = seen.get(mod,0) + 1
         return count
