@@ -7,6 +7,9 @@ class Solution:
         for num in nums:
             prefix_sum += num
             mod = prefix_sum % k
+
+            if mod<0:
+                mod += k
             
             if mod in seen:
                 count += seen[mod]
