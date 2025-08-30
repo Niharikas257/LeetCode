@@ -14,14 +14,14 @@ class Solution(object):
         #         return [hash_map[remainder], index]
             
         #     hash_map[value]=index
-            
-        
+
         table = {}
 
-        for index, value in enumerate(nums):
-            remainder = target - value
-
+        for i,num in enumerate(nums):
+            remainder = target - num
             if remainder in table:
-                return[table[remainder], index]
+                return [table[remainder],i]
+            table[num] = i
             
-            table[value] = index
+        
+ 
