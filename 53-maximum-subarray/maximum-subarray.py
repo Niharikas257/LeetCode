@@ -1,5 +1,7 @@
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
+        if not nums:
+            return 
         current_sum = nums[0]
         max_sum = nums[0]
 
