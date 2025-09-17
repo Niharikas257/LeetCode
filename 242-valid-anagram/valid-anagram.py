@@ -3,18 +3,35 @@ class Solution:
         table = {}
         if len(s) != len(t):
             return False
-
+        
         for i in s:
             if i in table:
                 table[i] += 1
             else:
                 table[i] = 1
-
+            
         for j in t:
-                if j not in table or table[j] == 0 :
-                    return False
-                table[j] -= 1
+            if j not in table or table[j] == 0:
+                return False
+            table[j] -= 1
+        
         return True
+
+        # table = {}
+        # if len(s) != len(t):
+        #     return False
+
+        # for i in s:
+        #     if i in table:
+        #         table[i] += 1
+        #     else:
+        #         table[i] = 1
+
+        # for j in t:
+        #         if j not in table or table[j] == 0 :
+        #             return False
+        #         table[j] -= 1
+        # return True
 
 
 # class Solution:
@@ -30,5 +47,7 @@ class Solution:
 #             table[ch] -= 1
 
 #         return True
+
+
 
         
