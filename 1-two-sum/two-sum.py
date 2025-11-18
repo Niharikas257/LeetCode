@@ -5,23 +5,13 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        # hash_map={}
+        store = {}
+        for i in range(len(nums)):
+            rem = target - nums[i]
+            # if rem not in store:
+            #     store[nums[i]] = i
+            if rem in store:
+                return [i, store[rem]]
+            store[nums[i]] = i
+        return []
         
-        # for index,value in enumerate(nums):
-        #     remainder=target-value
-            
-        #     if remainder in hash_map:
-        #         return [hash_map[remainder], index]
-            
-        #     hash_map[value]=index
-
-        table = {}
-
-        for i,num in enumerate(nums):
-            remainder = target - num
-            if remainder in table:
-                return [table[remainder],i]
-            table[num] = i
-            
-        
- 
