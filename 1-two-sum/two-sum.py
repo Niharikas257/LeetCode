@@ -5,13 +5,19 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
+        # store = {}
+        # for i in range(len(nums)):
+        #     rem = target - nums[i]
+        #     # if rem not in store:
+        #     #     store[nums[i]] = i
+        #     if rem in store:
+        #         return [i, store[rem]]
+        #     store[nums[i]] = i
+        # return []
         store = {}
         for i in range(len(nums)):
-            rem = target - nums[i]
-            # if rem not in store:
-            #     store[nums[i]] = i
-            if rem in store:
-                return [i, store[rem]]
+            remainder = target - nums[i]
+            if remainder in store:
+                return [i, store[remainder]]
             store[nums[i]] = i
         return []
-        
