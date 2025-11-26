@@ -1,64 +1,27 @@
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
-        res = []
         nums.sort()
+        res = []
 
-        for i,a in enumerate(nums):
-            if a > 0:
+        for i, num in enumerate(nums):
+            if num > 0: # if the number you are talking about is positive, there are no chances that you will get a number smaller than that to make the sum zero.
                 break
-            if i > 0 and a == nums[i-1]:
+            if i >0 and num == nums[i-1]:
                 continue
-            
-            l, r = i+1, len(nums)-1
-            while l<r:
-                threeSum = a + nums[l]+nums[r]
-                if threeSum > 0:
-                    r -= 1
-
-                elif threeSum < 0:
-                    l += 1
-
-                else:
-                    res.append([a, nums[l], nums[r]])
-                    l += 1
-                    r -= 1
-                    while nums[l] == nums[l - 1] and l < r:
-                        l += 1
-                        
+            left = i+1
+            right= len(nums) - 1
+            while left < right:
+                three_sum = num + nums[left] + nums[right]
+                if three_sum > 0:
+                    right -= 1
+                elif three_sum < 0:
+                    left += 1
+                else: 
+                    res.append([num, nums[left], nums[right]])
+                    left += 1
+                    right -= 1
+                    while nums[left] == nums[left -1] and left<right:
+                        left+=1
+        
         return res
-                    
-# class Solution:
-#     def threeSum(self, nums: List[int]) -> List[List[int]]:
-#         res = []
-#         nums.sort()
 
-#         for i, a in enumerate(nums):
-#             if a > 0:
-#                 break
-
-#             if i > 0 and a == nums[i - 1]:
-#                 continue
-
-#             l, r = i + 1, len(nums) - 1
-#             while l < r:
-#                 threeSum = a + nums[l] + nums[r]
-#                 if threeSum > 0:
-#                     r -= 1
-#                 elif threeSum < 0:
-#                     l += 1
-#                 else:
-#                     res.append([a, nums[l], nums[r]])
-#                     l += 1
-#                     r -= 1
-#                     while nums[l] == nums[l - 1] and l < r:
-#                         l += 1
-                        
-#         return res
-                
-        
-
-
-
-
-
-        
