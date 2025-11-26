@@ -1,40 +1,22 @@
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        l, r = 0, len(s)-1
-
-        while l<r:
-            while l < r and not self.alphaNum(s[l]):
-                l += 1
-            while r > l and not self.alphaNum(s[r]):
-                r -= 1
-            if s[l].lower() != s[r].lower():
+        left = 0
+        right = len(s) -1
+        while left < right:
+            while left < right and not self.alphaNum(s[left]):
+                left += 1
+            while right > left and not self.alphaNum(s[right]):
+                right -= 1
+            if s[left].lower() != s[right].lower():
                 return False
-            l = l+1
-            r = r-1
+            left += 1
+            right -= 1
 
         return True
     
-
     def alphaNum(self, c):
-        return (ord('A') <= ord(c) <= ord('Z') or 
-                ord('a') <= ord(c) <= ord('z') or 
+        return (ord('a')<= ord(c) <= ord('z') or
+                ord('A') <= ord(c) <= ord('Z') or 
                 ord('0') <= ord(c) <= ord('9'))
 
-# class Solution:
-#     def isPalindrome(self, s: str) -> bool:
-#         l, r = 0, len(s) - 1
 
-#         while l < r:
-#             while l < r and not self.alphaNum(s[l]):
-#                 l += 1
-#             while r > l and not self.alphaNum(s[r]):
-#                 r -= 1
-#             if s[l].lower() != s[r].lower():
-#                 return False
-#             l, r = l + 1, r - 1
-#         return True
-    
-#     def alphaNum(self, c):
-#         return (ord('A') <= ord(c) <= ord('Z') or 
-#                 ord('a') <= ord(c) <= ord('z') or 
-#                 ord('0') <= ord(c) <= ord('9'))
