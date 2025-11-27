@@ -1,37 +1,47 @@
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
-        if not s or not t:
+        if len(s) < len(t):
             return ""
+
+        Hash_T = {}
+
+        for ch in t:
+            Hash_T[ch] = Hash_T.get(ch,0) + 1
         
-        countT = {}
-        for c in t:
-            countT[c] = 1 + countT.get(c,0)
+        need = len(Hash_T)
+        have = 0
+        res = [-1,-1]
 
         left = 0
         window = {}
-        res= [-1,-1]
-        resLen = float("infinity")
-        what_we_have = 0
-        what_we_need = len(countT)
-
+        min_val = float("infinity")
         for right in range(len(s)):
-            c = s[right]
-            window[c] = 1 + window.get(c,0)
+            window[s[right]] = window.get(s[right], 0) + 1
+            if s[right] in Hash_T and window[s[right]] == Hash_T[s[right]]:
+                have += 1
 
-            if c in countT and window[c] == countT[c]:
-                what_we_have += 1
+            while need == have:
+                if (right - left + 1) < min_val:
+                    res = [left, right]
+                    min_val = (right - left + 1)
 
-            while what_we_have == what_we_need:
-                if (right-left+1)< resLen:
-                    res = [left,right]
-                    resLen = (right-left+1)
 
                 window[s[left]] -= 1
-                if s[left] in t and window[s[left]] < countT[s[left]]:
-                    what_we_have -= 1
+                if s[left] in Hash_T and Hash_T[s[left]] > window[s[left]]:
+                    have -= 1
+
                 left += 1
-        left,right = res
-        return s[left:right+1] if resLen!=float("infinity") else ""
+            
+        left, right = res
+        return s[left : right + 1] if min_val != float("infinity") else ""
+
+
+
+
+
+        
+
+        
 
 
         
