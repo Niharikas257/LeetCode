@@ -7,18 +7,33 @@
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         if not root:
-            return True  # Changed to return True for empty tree
-        stack = [(root, float('-inf'), float('inf'))]  # Track (node, lower bound, upper bound)
-        
-        while stack:
-            node, low, high = stack.pop()  # Unpack node, low, high
+            return True
+        stack = []
+        cur = root
+        # res = []
+        prev = None
+
+        while stack or cur:
+            while cur:
+                stack.append(cur)
+                cur = cur.left
             
-            if not (low < node.val < high):  # Check if node value is within the valid range
+            cur = stack.pop()
+            if prev is not None and cur.val <= prev:
                 return False
+            prev = cur.val
 
-            if node.right:
-                stack.append((node.right, node.val, high))  # Update lower bound for right child
-            if node.left:
-                stack.append((node.left, low, node.val))  # Update upper bound for left child
+            cur = cur.right
+        return True
 
-        return True  # Return True if all nodes are valid
+        # for i in range(1, len(res)):
+        #     if res[i] <= res[i-1]:
+        #         return False
+        
+        # return True
+
+        # return True if res = res.sorted() else False
+
+        # 1. a valid binary search tree has sorted output
+        # 2. we are given breadth first search
+        # 3. 
