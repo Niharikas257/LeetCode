@@ -4,39 +4,30 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
-# class Solution:
-#     def verticalTraversal(self, root: Optional[TreeNode]) -> List[List[int]]:
-
-from collections import defaultdict
-
 class Solution:
-    def verticalTraversal(self, root):
-        nodes = []   # will store (col, row, value)
-
-        # DFS traversal
-        def dfs(node, row, col):
-            if not node:
-                return
-            nodes.append((col, row, node.val))
-            dfs(node.left,  row + 1, col - 1)
-            dfs(node.right, row + 1, col + 1)
-
-        # start DFS at root with row=0, col=0
-        dfs(root, 0, 0)
-
-        # Sort nodes by: column → row → value
-        nodes.sort()   # Python tuple sort: col, row, value
-
-        # Build result grouped by columns
-        res = []
-        prev_col = float('-inf')
-
-        for col, row, val in nodes:
-            if col != prev_col:
-                res.append([])
-                prev_col = col
-            res[-1].append(val)
-
-        return res
-
+    def verticalTraversal(self, root: Optional[TreeNode]) -> List[List[int]]:
+        if not root:
+            return []
         
+        col_map = defaultdict(list)
+        # q = deque([(root, 0, 0)])
+        stack = ([(root, 0,0)])
+        cur = 0
+        # while q:
+        while stack:
+            # cur, row, col = q.popleft()
+            cur, row, col = stack.pop()
+            # col_map[col].append((row, cur.val))
+            col_map[col].append((row, cur.val))
+            if cur.left:
+                # q.append((cur.left, row+1, col -1))
+                stack.append((cur.left, row+1, col -1))
+            if cur.right:
+                # q.append((cur.right, row+1, col+1))
+                stack.append((cur.right, row+1, col+1))
+        
+        result = []
+        for col in sorted(col_map.keys()):
+            col_map[col].sort()
+            result.append([val for row, val in col_map[col]])
+        return result
