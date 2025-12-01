@@ -1,9 +1,7 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        res = []
-        # visited = set()
         path = []
-
+        res = []
         def backtrack(i):
             res.append(path[:])
             for i in range(i, len(nums)):
@@ -12,5 +10,4 @@ class Solution:
                 path.pop()
         backtrack(0)
         return res
-                
 
