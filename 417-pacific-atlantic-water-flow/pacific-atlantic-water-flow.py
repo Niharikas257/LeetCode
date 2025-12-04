@@ -8,21 +8,24 @@ class Solution:
         pacific = [[False]*cols for _ in range(rows)]
         atlantic = [[False]*cols for _ in range(rows)]
 
-        q = deque()
+        # q = deque()
 
         def dfs(row, col, visited):
             visited[row][col] = True
             for (dr, dc) in directions:
                 new_row = row + dr
                 new_col = col + dc
-            
-                if new_row < 0 or new_col < 0 or new_row >= rows or new_col >= cols:
+
+                if new_row<0 or new_col <0 or new_col >= cols or new_row>=rows:
                     continue
                 if visited[new_row][new_col] == True:
                     continue
+
                 if heights[new_row][new_col] < heights[row][col]:
                     continue
+                
                 dfs(new_row, new_col, visited)
+                
 
         # pacific = []
         # atlantic = []
