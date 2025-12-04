@@ -1,11 +1,14 @@
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         graph = [[] for _ in range(numCourses)]
-        indegree = [0]*numCourses
-
         for course,pre in prerequisites:
             graph[pre].append(course)
-            indegree[course] += 1
+            
+        indegree = [0] * numCourses
+        for pre in range(numCourses):
+            for course in graph[pre]:
+                indegree[course] += 1
+
 
         q = deque()
         for course in range(numCourses):
