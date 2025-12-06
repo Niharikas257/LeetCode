@@ -1,7 +1,7 @@
 class Solution:
     def findMinArrowShots(self, points: List[List[int]]) -> int:
-        if points is None:
-            return 0
+        # if points is None:
+        #     return 0
         points.sort(key = lambda x:x[1]) # sort the array based on the end value, 0 indexed.
 
         arrow_count = 1 # we always need one arrow unless the points is empty
