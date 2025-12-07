@@ -1,14 +1,22 @@
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
-        max_so_far = 0
+        max_val = 0
+        jump_reach = 0
+
         for i in range(len(nums)):
-            if i > max_so_far:
+            if i > max_val:
                 return False
-                
-            reach = i + nums[i]
-            if reach > max_so_far:
-                max_so_far = reach
-            
-            if max_so_far > len(nums)-1:
+
+            jump_reach = i + nums[i]
+
+            if jump_reach > max_val:
+                max_val = jump_reach
+    
+            if max_val > len(nums)-1 :
                 return True
+
         return True
+
+            
+
+        
