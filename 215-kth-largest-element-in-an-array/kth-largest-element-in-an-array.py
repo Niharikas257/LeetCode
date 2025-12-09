@@ -11,16 +11,25 @@
 #         return res[-1]
 
 
-import heapq
-from typing import List
+# import heapq
+# from typing import List
+
+# class Solution:
+#     def findKthLargest(self, nums: List[int], k: int) -> int:
+#         minheap = []
+
+#         for num in nums:
+#             heapq.heappush(minheap, num)
+#             if len(minheap) > k:
+#                 heapq.heappop(minheap)    # kick out smallest, keep only k largest
+
+#         return minheap[0]                 # root = kth largest
 
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
         minheap = []
-
         for num in nums:
             heapq.heappush(minheap, num)
-            if len(minheap) > k:
-                heapq.heappop(minheap)    # kick out smallest, keep only k largest
-
-        return minheap[0]                 # root = kth largest
+            if len(minheap)>k:
+                heapq.heappop(minheap)
+        return minheap[0]
