@@ -39,7 +39,7 @@ class Solution:
                 stack.append((cur.left, max_so_far))
             if cur.right:
                 stack.append((cur.right, max_so_far))
-        print (good)
+        # print (good)
         return len(good)
 
 
