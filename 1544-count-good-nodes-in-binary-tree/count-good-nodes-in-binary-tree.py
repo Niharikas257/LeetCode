@@ -6,43 +6,43 @@
 #         self.right = right
 class Solution:
     def goodNodes(self, root: TreeNode) -> int:
-        good = []
+        # good = []
+        # if not root:
+        #     return 0
+        
+        # stack = [(root, root.val)]
+        # while stack:
+        #     node, max_sofar = stack.pop()
+        #     if node.val>=max_sofar:
+        #         good.append(node.val)
+        #     max_sofar = max(node.val, max_sofar)
+        #     if node.left:
+        #         stack.append((node.left, max_sofar))
+        #     if node.right:
+        #         stack.append((node.right, max_sofar))
+        # return len(good)
+
+
         if not root:
             return 0
-        
         stack = [(root, root.val)]
+        good =  []
+        max_so_far = root.val
+
+
         while stack:
-            node, max_sofar = stack.pop()
-            if node.val>=max_sofar:
-                good.append(node.val)
-            max_sofar = max(node.val, max_sofar)
-            if node.left:
-                stack.append((node.left, max_sofar))
-            if node.right:
-                stack.append((node.right, max_sofar))
+            cur, max_so_far = stack.pop()
+            if cur.val >= max_so_far:
+                good.append(cur.val)
+            max_so_far = max(max_so_far, cur.val)
+            if cur.left:
+                stack.append((cur.left, max_so_far))
+            if cur.right:
+                stack.append((cur.right, max_so_far))
+        print (good)
         return len(good)
 
 
-        # if not root:
-        #     return 0
-        # stack = [(root, root.val)]
-        # good = []
-        # while stack:
-        #     node, max_so_far = stack.pop()
-
-        #     if node.val >= max_so_far:
-        #         good.append(node.val)
-        #     max_so_far = max(max_so_far, node.val)
-
-        #     if node.right:
-        #         stack.append((node.right, max_so_far))
-                
-
-        #     if node.left:
-        #         stack.append((node.left, max_so_far))
-                
-            
-        # return len(good)
 
 
         # def dfs(node, max_val):
