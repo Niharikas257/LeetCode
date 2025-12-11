@@ -22,7 +22,7 @@ class Solution:
         res = []
         path = []
         visited = set()
-        def dfs():
+        def dfs(index):
             if len(path) == len(nums):
                 res.append(path.copy())
                 return
@@ -32,11 +32,11 @@ class Solution:
                     continue
                 path.append(nums[i])
                 visited.add(nums[i])
-                dfs()
+                dfs(i+1)
                 path.pop()
                 visited.remove(nums[i])
         
-        dfs()
+        dfs(0)
         return res
             
 
