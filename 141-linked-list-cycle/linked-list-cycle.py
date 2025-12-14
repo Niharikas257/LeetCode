@@ -6,29 +6,27 @@
 
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        visited = set()
-        curr = head
+        # visited = set()
+        # curr = head
 
-        while curr:
-            # if curr.val not in visited:
-            #     visited.append(curr.val)
+        # while curr:
             
-            if curr in visited:
+        #     if curr in visited:
+        #         return True
+        #     visited.add(curr)
+        #     curr= curr.next
+        # return False
+
+        slow = head
+        fast = head
+
+        while fast is not None and fast.next is not None:
+            slow = slow.next
+            fast = fast.next.next
+
+            if fast == slow:
                 return True
-            visited.add(curr)
-            curr= curr.next
         return False
 
-# class Solution:
-#     def hasCycle(self, head: Optional[ListNode]) -> bool:
-#         visited = set()      # 1) use a set of nodes, not a list of values
-#         curr = head
-
-#         while curr:
-#             if curr in visited:   # 2) if we’ve seen this node before, there’s a cycle
-#                 return True
-#             visited.add(curr)     # 3) mark the current node as seen
-#             curr = curr.next      # 4) advance
-#         return False              # no cycle found
 
         
