@@ -14,14 +14,27 @@ class Solution:
         # while left < right:
         #     if nums[left] == nums[right]:
         
-        if len(nums) <= 1:
-            return False
-        nums_idx = [[num, i] for i, num in enumerate(nums)]
-        nums_idx.sort()
-        for j in range(len(nums_idx)):
-            if nums_idx[j][0] == nums_idx[j-1][0] and abs(nums_idx[j][1] - nums_idx[j-1][1]) <= k:
+        # if len(nums) <= 1:
+        #     return False
+        # nums_idx = [[num, i] for i, num in enumerate(nums)]
+        # nums_idx.sort()
+        # for j in range(len(nums_idx)):
+        #     if nums_idx[j][0] == nums_idx[j-1][0] and abs(nums_idx[j][1] - nums_idx[j-1][1]) <= k:
+        #         return True
+        # return False
+
+        seen = set()
+        for i, num in enumerate(nums):
+            if num in seen:
                 return True
+            seen.add(num)
+            if i >= k:
+                seen.remove(nums[i-k])
         return False
+
+
+
+
 
 
 
