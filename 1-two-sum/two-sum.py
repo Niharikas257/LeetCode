@@ -5,19 +5,15 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        # store = {}
-        # for i in range(len(nums)):
-        #     rem = target - nums[i]
-        #     # if rem not in store:
-        #     #     store[nums[i]] = i
-        #     if rem in store:
-        #         return [i, store[rem]]
-        #     store[nums[i]] = i
-        # return []
-        store = {}
+        # 1. can i change the input - yes - sorting
+        # 2. can I use extra space - yes - Hash map
+        # 3. Is it absolute difference ? - Yes
+        # 4. can the values be nagtive - no - sliding window/ prefix
+
+        seen = {}
         for i in range(len(nums)):
             remainder = target - nums[i]
-            if remainder in store:
-                return [i, store[remainder]]
-            store[nums[i]] = i
+            if remainder in seen:
+                return [i, seen[remainder]]
+            seen[nums[i]] = i
         return []
