@@ -14,19 +14,11 @@ class Solution:
         res = 0
         for num in store:
             if (num - 1) not in store:
-                streak = 1 # If the smaller number does not exist in the store, that means it could be the start of a strak.
+                streak = 1 # If the smaller number does not exist in the store, that means it could be the start of a streak.
                 while (num + streak) in store:
                     streak += 1
                 res = max(res, streak)
         return res
-
-
-
-
-
-
-
-
 
         # res = 0
         # store = set(nums)
@@ -37,7 +29,22 @@ class Solution:
         #         streak += 1
         #         cur_element += 1
         #     res = max(res, streak)
-        # return res
+        # return res\
+
+        seen = set(nums)
+        streak_len = 0
+        longest = 0
+        for num in nums:
+            if (num - 1) not in seen:
+                start_of_streak = num
+                streak_len += 1
+            if start_of_streak + 1 in seen:
+                start_of_streak += 1
+                streak_len += 1
+            longest = max(longest, streak_len)
+        return longest
+
+
 
 
 
