@@ -13,7 +13,7 @@ class Solution:
                 right -= 1
             
 
-            if left < right:
+            if left < right and chars[left] in vowels and chars[right] in vowels:
                 chars[left], chars[right] = chars[right], chars[left]
                 left += 1
                 right -= 1
