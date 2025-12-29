@@ -10,6 +10,4 @@ class Solution:
                     stack.pop()
                 else:
                     count += 1
-        return len(stack) + count
-
-        
+        return len(stack)+ count
