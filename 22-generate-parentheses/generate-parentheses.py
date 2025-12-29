@@ -3,20 +3,20 @@ class Solution:
         res = []
         path = []
 
-        def backtrack(open, close):
+        def dfs(open, close):
             if open == n and close == n:
                 res.append("".join(path))
+
                 return res
             
             if open < n:
                 path.append("(")
-                backtrack(open+1, close)
+                dfs(open+1, close)
                 path.pop()
             
             if close < open:
                 path.append(")")
-                backtrack(open, close+1)
+                dfs(open, close+1)
                 path.pop()
-            
-        backtrack(0,0)
+        dfs(0,0)
         return res
