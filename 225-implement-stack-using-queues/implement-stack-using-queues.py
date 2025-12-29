@@ -2,22 +2,27 @@ class MyStack:
 
     def __init__(self):
         self.stack = []
+        
 
     def push(self, x: int) -> None:
         self.stack.append(x)
+        
 
     def pop(self) -> int:
         if self.empty():
-            raise IndexError("Empty!")
+            raise IndexError("Error!")
         return self.stack.pop()
+        
 
     def top(self) -> int:
         if self.empty():
-            raise IndexError("Empty!")
+            raise IndexError("Error!")
         return self.stack[-1]
+        
 
     def empty(self) -> bool:
-        return len(self.stack) == 0
+        return len(self.stack)==0
+        
 
 
 # Your MyStack object will be instantiated and called as such:
