@@ -15,6 +15,8 @@ class Solution:
                     current_load += weight
             return True
         low = max(weights)
+        # low = min(weights) # both works
+
         high = sum(weights)
         while low < high:
             mid = low +(high - low) // 2
