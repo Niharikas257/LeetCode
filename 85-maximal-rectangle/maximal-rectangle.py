@@ -16,38 +16,25 @@ class Solution:
 
         return max_area
 
-    # def _largestRectangleArea(self, heights):
     def _largestRectangleArea(self, heights: List[int]) -> int:
-        # Monotonic increasing stack of (start_index, height)
-        # start_index tells how far left this height can extend.
         stack = []
         best = 0
 
         for i, h in enumerate(heights):
-            start = i
-
-            # If current height is smaller, we must close rectangles that are taller than h
+            cur = i
             while stack and stack[-1][1] > h:
                 prev_start, prev_height = stack.pop()
-
-                # Rectangle of height prev_height spans from prev_start to i - 1
                 area = prev_height * (i - prev_start)
-                if area > best:
-                    best = area
-
-                # Current bar of height h can extend as far left as prev_start
-                start = prev_start
-
-            # Push current height with the earliest start it can use
-            stack.append((start, h))
+                best = max(best, area)
+                cur = prev_start
+            stack.append((cur, h))
 
         # Close any rectangles that extend to the end of the histogram
         n = len(heights)
         while stack:
             start, h = stack.pop()
             area = h * (n - start)
-            if area > best:
-                best = area
+            best = max(best, area)
 
         return best
         
