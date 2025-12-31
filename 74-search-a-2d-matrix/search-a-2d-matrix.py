@@ -3,19 +3,25 @@ class Solution:
         rows = len(matrix)
         cols = len(matrix[0])
 
-        left = 0
-        right = (rows*cols) - 1
+        # left = 0
+        # right = (rows*cols) - 1
 
-        while left <= right:
-            mid = left + (right - left)//2
-            row = mid // cols
-            col = mid % cols
-            if target > matrix[row][col]:
-                left = mid + 1
-            elif target< matrix[row][col]:
-                right = mid -1
-            else:
-                return True
+        # while left <= right:
+        #     mid = left + (right - left)//2
+        #     row = mid // cols
+        #     col = mid % cols
+        #     if target > matrix[row][col]:
+        #         left = mid + 1
+        #     elif target< matrix[row][col]:
+        #         right = mid -1
+        #     else:
+        #         return True
+        # return False
+
+        for row in range(rows):
+            for col in range(cols):
+                if matrix[row][col] == target:
+                    return True
         return False
 
       
