@@ -4,16 +4,32 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+# class Solution:
+#     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+#         stack = []
+#         cur = root
+#         res = []
+
+#         while stack or cur is not None:
+#             while cur:
+#                 stack.append(cur)
+#                 cur = cur.left             
+            
+#             cur = stack.pop()
+#             res.append(cur.val)
+
+#             cur = cur.right
+#         return res
 class Solution:
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+
         stack = []
         cur = root
         res = []
-        while cur is not None or stack:
+        while stack or cur is not None:
             while cur:
                 stack.append(cur)
                 cur = cur.left
-            
             cur = stack.pop()
             res.append(cur.val)
 
