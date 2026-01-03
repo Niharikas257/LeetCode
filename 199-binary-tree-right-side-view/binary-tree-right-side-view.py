@@ -6,33 +6,45 @@
 #         self.right = right
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
-        # res = []
-        # q = collections.deque()
+        # if not root:
+        #     return []
+
+        # q = deque()
         # q.append(root)
+        # res = []        
 
         # while q:
-        #     rightmost = None
-
-        #     for i in range(len(q)):
-        #         node = q.popleft()
-        #         if node:
-        #             rightmost = node
-        #             q.append(node.left)
-        #             q.append(node.right)
-        #     if rightmost: # This loop will run only after the previous loop len(q) number of times, len(q) is the number of elements in that level.  So, once the previous loop runs the number of times = number of elements in the level, only then this loop will run and by then the rightmost element has already been updated to the last value (right most) value in the level.
-        #         res.append(rightmost.val)
+        #     Q = len(q)
+        #     for i in range(Q):
+        #         cur = q.popleft()
+        #         if i == Q -1:
+        #             res.append(cur.val)
+        #         if cur.left:
+        #             q.append(cur.left)
+        #         if cur.right:
+        #             q.append(cur.right)
         # return res
-        res = []
+
+        if not root:
+            return []
+        q = deque()
+        q.append(root)
         visited = set()
-        def dfs(node,depth):
-            if not node:
-                return None
-            if depth not in visited:
-                visited.add(depth)
-                res.append(node.val)
-            dfs(node.right, depth+1)
-            dfs(node.left, depth+1)
-        dfs(root,0)
+        res = []
+        while q:
+            size = len(q)
+            for i in range(len(q)):
+                node = q.popleft()
+                if i == size-1 :
+                    res.append(node.val)
+                if node.left:
+                    q.append(node.left)
+                if node.right:
+                    q.append(node.right)
         return res
+            
+
+
+        
 
         
