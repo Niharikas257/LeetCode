@@ -6,33 +6,37 @@
 #         self.right = right
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
-        # if root is None:
-        #     return 0
-        # q = deque([(root, 1)])
-        # res = 0
-        # while q:
-        #     node, depth = q.popleft()
-        #     res = max(res, depth)
-        #     if node.left:
-        #         q.append((node.left, depth+1))
-        #     if node.right:
-        #         q.append((node.right, depth+1))
-        # return res
-
-        stack = [([root, 1])]
-        res = 0
-        if not root:
-            return 0
-
-        while stack:
+        # 1. let's do the inorder traversal, now because you need to add the depth, go to the root, go to the right and then add the depth again, so this basically means backtracking.
+        # 2. The good part is, using stack will do that for you. When you pop the value from the stack, it is taking out that depth which you wanted to subtract while moving back to the root.
+        stack = []
+        cur = root
+        depth = 0
+        best = 0
+        while stack or cur is not None:
+            while cur:
+                depth += 1
+                stack.append([cur, depth])
+                cur = cur.left
             cur, depth = stack.pop()
-            res = max(res, depth)
-            if cur.left:
-                stack.append([cur.left, depth+1])
-            if cur.right:
-                stack.append([cur.right, depth + 1])
-        return res            
+            best = max(best, depth)
 
+            cur = cur.right
+        return best
+        # stack = []
+        # cur = root
+        # res = 0
+        # depth = 0
+
+        # while stack or cur is not None:
+        #     while cur:
+        #         depth += 1
+        #         stack.append([cur, depth])
+        #         cur = cur.left
+
+        #     cur, depth = stack.pop()
+        #     res = max(res, depth)
+        #     cur = cur.right
+        # return res
 
 
 ############### STACK##############
