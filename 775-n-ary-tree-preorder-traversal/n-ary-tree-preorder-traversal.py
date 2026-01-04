@@ -18,6 +18,6 @@ class Solution:
             res.append(cur.val)
             if cur.children:
                 for child in reversed(cur.children):
-                    if child is not None:
-                        stack.append(child)
+                    # if child is not None:
+                    stack.append(child)
         return res
