@@ -34,7 +34,7 @@ class Solution:
             if low <= cur.val <= high:
                 total += cur.val
             # res.append(cur.val)
-            # if cur.val > high:
-            #     break
+            if cur.val > high:
+                break
             cur = cur.right
         return total
