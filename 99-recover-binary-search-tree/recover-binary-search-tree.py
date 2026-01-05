@@ -61,7 +61,8 @@ class Solution:
                         second = cur
                     prev = cur
                     cur = cur.right
-        first.val, second.val = second.val, first.val
+        if first is not None and second is not None :
+            first.val, second.val = second.val, first.val
                 
 
         
