@@ -7,10 +7,8 @@ class Solution:
         while left <= right:
             if left < right and people[left] + people[right] <= limit:
                 left += 1
-                right -= 1
-            else:
-                right -= 1
-            
+                # right -= 1
+            right -= 1
             groups += 1
         return groups
         
