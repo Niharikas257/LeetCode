@@ -1,12 +1,13 @@
 class Solution:
     def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
 
-        res =[]
+        res = []
+        
         for i in range(len(intervals)):
             old_start, old_end = intervals[i]
             if old_end < newInterval[0]:
                 res.append(intervals[i])
-            elif newInterval[1] < old_start:
+            elif old_start > newInterval[1]:
                 res.append(newInterval)
                 return res + intervals[i:]
             else:
@@ -16,3 +17,4 @@ class Solution:
                 ]
         res.append(newInterval)
         return res
+
