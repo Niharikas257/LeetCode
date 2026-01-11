@@ -16,6 +16,7 @@ class Solution:
 
         left = 0
         right = 0
+
         profit = 0
         max_profit = 0
 
@@ -27,8 +28,3 @@ class Solution:
                 left = right
             right += 1
         return max_profit
-
-
-
-
-
