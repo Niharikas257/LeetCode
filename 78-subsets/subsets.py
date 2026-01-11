@@ -3,28 +3,26 @@ class Solution:
         # res = []
         # path = []
 
-        # def backtrack(k):
-        #     res.append(path[:])
-        #     for i in range(k, len(nums)):
-        #         path.append(nums[i])
-        #         backtrack(i+1)
-        #         path.pop()
-        # backtrack(0)
+        # def dfs(index, path):
+        #     res.append(path.copy())
+        #     for i in range(index, len(nums)):
+        #     # dfs(index+1, path) # Skip
+        #         path.append(nums[i]) # Take
+        #         dfs(i+1, path)
+        #         path.pop() # clean it for future
+
+        # dfs(0,[])
         # return res
 
-        res = []
         path = []
-
+        res = []
         def dfs(index, path):
-            if index == len(nums):
-                res.append(path.copy())
-                return
-            
-            dfs(index+1, path)
-            path.append(nums[index])
-            dfs(index+1, path)
-            path.pop()
-
+            res.append(path.copy())
+            for i in range(index, len(nums)):
+                path.append(nums[i])
+                dfs(i+1, path)
+                path.pop()
         dfs(0,[])
         return res
+
 
