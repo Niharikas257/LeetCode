@@ -4,23 +4,21 @@ class Solution:
         # path = []
         # candidates.sort()
 
-        # def backtrack(i, total):
+        # def dfs(index, total):
         #     if total == target:
         #         res.append(path.copy())
-        #         return res
-        #     for j in range(i, len(candidates)):
-
-        #         if j > i and candidates[j] == candidates[j-1]:
+        #         return 
+        #     for i in range(index, len(candidates)):
+        #         if i > index and candidates[i] == candidates[i-1]:
         #             continue
-        #         if candidates[j] + total > target:
-        #             break
-        #         path.append(candidates[j])
-        #         backtrack(j+1, total + candidates[j])
+        #         if total + candidates[i]> target:
+        #             return
+        #         path.append(candidates[i])
+        #         dfs(i+1, total + candidates[i])
         #         path.pop()
-        
-        # backtrack(0,0)
+        # dfs(0,0)
         # return res
-##############
+
         res = []
         path = []
         candidates.sort()
@@ -28,14 +26,14 @@ class Solution:
         def dfs(index, total):
             if total == target:
                 res.append(path.copy())
-                return 
+            
             for i in range(index, len(candidates)):
-                if i > index and candidates[i] == candidates[i-1]:
-                    continue
-                if total + candidates[i]> target:
+                if total > target:
                     return
+                if i > index and candidates[i-1] == candidates[i]:
+                    continue
                 path.append(candidates[i])
-                dfs(i+1, total + candidates[i])
+                dfs(i+1, candidates[i]+total)
                 path.pop()
         dfs(0,0)
         return res
