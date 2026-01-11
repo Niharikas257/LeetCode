@@ -19,6 +19,8 @@ class Solution:
         def dfs(index, path):
             res.append(path.copy())
             for i in range(index, len(nums)):
+                # if i < len(nums) and nums[i] == nums[i-1]:
+                #     continue
                 path.append(nums[i])
                 dfs(i+1, path)
                 path.pop()
