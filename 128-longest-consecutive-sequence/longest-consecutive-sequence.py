@@ -20,29 +20,30 @@ class Solution:
                 res = max(res, streak)
         return res
 
-        # res = 0
-        # store = set(nums)
-        # for num in nums:
-        #     streak = 0
-        #     cur_element = num
-        #     while cur_element in store:
-        #         streak += 1
-        #         cur_element += 1
-        #     res = max(res, streak)
-        # return res\
 
-        seen = set(nums)
-        streak_len = 0
-        longest = 0
-        for num in nums:
-            if (num - 1) not in seen:
-                start_of_streak = num
-                streak_len += 1
-            if start_of_streak + 1 in seen:
-                start_of_streak += 1
-                streak_len += 1
-            longest = max(longest, streak_len)
-        return longest
+        # seen = set(nums)
+        # streak_len = 0
+        # longest = 0
+        # for num in nums:
+        #     if (num - 1) not in seen:
+        #         start_of_streak = num
+        #         streak_len += 1
+        #     if start_of_streak + 1 in seen:
+        #         start_of_streak += 1
+        #         streak_len += 1
+        #     longest = max(longest, streak_len)
+        # return longest
+
+        # streak = 0
+        # res = 0
+        # for num in set(nums):
+        #     if (num-1) not in set(nums):
+        #         streak = 1 # This could be the potential start of new streak
+        #         while (num + streak) in set(nums):
+        #             streak += 1
+        #         res = max(res, streak)
+        # return res
+
 
 
 
