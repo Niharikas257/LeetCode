@@ -8,9 +8,9 @@ class Solution:
                             "7":"pqrs",
                             "8":"tuv",
                             "9":"wxyz" }
-
-        # res = []
-        # path = []
+        
+        res = []
+        path = []
 
         # def dfs(index):
         #     if index == len(digits):
@@ -22,10 +22,8 @@ class Solution:
         #         path.pop()
         # dfs(0)
         # return res
-        
-        res = []
-        path = []
 
+ 
         def dfs(index):
             if index == len(digits):
                 res.append("".join(path.copy()))
@@ -36,5 +34,4 @@ class Solution:
                 path.pop()
         dfs(0)
         return res
-
- 
+            
